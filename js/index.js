@@ -24,7 +24,7 @@ const seleccion = () => {
     else {
         mensaje = alert(`Porfavor seleccione un modelo de reloj`);
         seleccion();
-    }asdasd
+    }
 }
 seleccion();
 

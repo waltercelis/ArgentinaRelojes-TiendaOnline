@@ -35,11 +35,14 @@ function renderizarProductos() {
         <ul class="section__img">
             <li>
                 <a class="a-producto"><img src="${producto.img}" alt="Reloj"></a>
-                <div class="producto__info">
-                    <h3>$${producto.price}</h3>
-                    <h3>${producto.title}</h3>
-                    <h4>Hombre</h4>
-                    <button class="btn" onclick="agregarProductoAlCarrito(${producto.id})">Agregar al carrito</button>
+                <div class="separador">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptates eius perspiciatis laudantium molestiae error animi, dolorem veniam porro totam modi fugit est qui maiores enim. Recusandae optio fugiat inventore?</p>
+                    <div class="producto__info">
+                        <h3>$${producto.price}</h3>
+                        <h3>${producto.title}</h3>
+                        <h4>Hombre</h4>
+                        <button class="btn" onclick="agregarProductoAlCarrito(${producto.id})">Agregar al carrito</button>
+                    </div>
                 </div>
             </li>
         </ul>

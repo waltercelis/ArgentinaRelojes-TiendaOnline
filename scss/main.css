@@ -7,9 +7,9 @@
 
 .grid-container {
   display: grid;
-  grid-template-areas: "header" "main" "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-areas: "header header" "main aside" "footer footer";
+  grid-template-columns: 2fr;
+  grid-template-rows: auto auto auto auto;
   font-family: "Noto Serif Georgian", serif;
 }
 .grid-container header {
@@ -57,12 +57,14 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
+  /* .main__container__producto {
+      margin: 40px 0;
+      padding: 2px 16px;
+      flex-direction: row;
+      display: inline-block; */
+  /* } */
 }
-.grid-container main .main__container__producto {
-  margin: 40px 0;
-  padding: 2px 16px;
-}
-.grid-container main .main__container__producto h2, .grid-container main .main__container__producto .footer-container .footer__contenedor .box__footer h3, .grid-container .footer-container .footer__contenedor .box__footer main .main__container__producto h3 {
+.grid-container main h2 {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -71,36 +73,38 @@
   color: transparent;
   background-color: #392b03;
   text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.8);
-  margin: -10px 0 1rem;
+  margin: 50px 0 50px 0;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
 }
-.grid-container main .main__container__producto .section__img {
-  display: flex;
+.grid-container main .section__img {
+  display: inline-flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.grid-container main .main__container__producto .section__img :first-child,
-.grid-container main .main__container__producto .section__img :nth-child(2),
-.grid-container main .main__container__producto .section__img :nth-child(3),
-.grid-container main .main__container__producto .section__img :nth-child(4) {
+.grid-container main .section__img :first-child,
+.grid-container main .section__img :nth-child(2),
+.grid-container main .section__img :nth-child(3),
+.grid-container main .section__img :nth-child(4) {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.grid-container main .main__container__producto .section__img li {
+.grid-container main .section__img li {
   display: flex;
   gap: 10px;
   width: 260px;
   height: 475px;
   padding: 15px;
   border-radius: 2px 25px;
+  margin: 0 0px 50px 90px;
 }
-.grid-container main .main__container__producto .section__img li .producto__info {
+.grid-container main .section__img li .producto__info {
   border-top: 1px solid #777;
 }
-.grid-container main .main__container__producto .section__img li .producto__info button {
+.grid-container main .section__img li .producto__info .btn {
+  display: flex;
   background-color: rgb(33, 29, 1);
   border-radius: 5px 25px;
   color: wheat;
@@ -112,31 +116,129 @@
   width: 100%;
   cursor: pointer;
 }
-.grid-container main .main__container__producto .section__img li .producto__info button:hover {
+.grid-container main .section__img li .producto__info .btn:hover {
   background-color: rgba(33, 26, 0, 0.88);
 }
-.grid-container main .main__container__producto .section__img li .producto__info h3 {
+.grid-container main .section__img li .producto__info h3 {
   font-weight: 500;
   padding-bottom: 5px;
   font-size: x-large;
 }
-.grid-container main .main__container__producto .section__img li .producto__info h4 {
+.grid-container main .section__img li .producto__info h4 {
   color: #777888;
   font-weight: 400;
   font-size: larger;
   margin-bottom: 3px;
 }
-.grid-container main .main__container__producto .section__img li .producto__info a {
+.grid-container main .section__img li .producto__info a {
   text-decoration: none;
 }
-.grid-container main .main__container__producto .section__img li .a-producto {
+.grid-container main .section__img li .a-producto {
   width: 220px;
   height: 330px;
   margin-left: auto;
   margin-right: auto;
 }
-.grid-container main .main__container__producto .section__img li:hover {
+.grid-container main .section__img li:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+}
+.grid-container aside {
+  grid-area: aside;
+  font-family: "Noto Serif Georgian", serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  min-width: 400px;
+  margin: 50px;
+}
+.grid-container aside h2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  color: rgb(54, 49, 7);
+  font-family: "Noto Serif Georgian", serif;
+}
+.grid-container aside hr {
+  border: none;
+  height: 1px;
+  background-color: #777;
+}
+.grid-container aside p {
+  font-family: "Noto Serif Georgian", serif;
+}
+.grid-container aside .boton {
+  background-color: #c80f22;
+  border-radius: 7px;
+  color: white;
+  border: 0;
+  padding: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: sans-serif;
+  width: 100px;
+  cursor: pointer;
+}
+.grid-container aside .section__img {
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}
+.grid-container aside .section__img :first-child,
+.grid-container aside .section__img :nth-child(2),
+.grid-container aside .section__img :nth-child(3),
+.grid-container aside .section__img :nth-child(4) {
+  display: flex;
+  flex-direction: row;
+}
+.grid-container aside .section__img li {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  border-radius: 10px 10px;
+  border: 1px solid rgb(202, 202, 201);
+  margin: 15px 0;
+}
+.grid-container aside .section__img li .producto__info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.grid-container aside .section__img li .producto__info .btn {
+  font-family: sans-serif;
+  display: flex;
+  background-color: #c80f22;
+  border-radius: 7px;
+  color: white;
+  border: 0;
+  padding: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100px;
+  cursor: pointer;
+}
+.grid-container aside .section__img li .producto__info h3 {
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-size: large;
+}
+.grid-container aside .section__img li .producto__info h4 {
+  color: #777888;
+  font-weight: 400;
+  font-size: smaller;
+  margin-bottom: 3px;
+}
+.grid-container aside .section__img li .producto__info a {
+  text-decoration: none;
+}
+.grid-container aside .section__img li .a-producto {
+  max-width: 150px;
+  height: 100%;
 }
 .grid-container .footer {
   grid-area: footer;
@@ -159,7 +261,7 @@
 .grid-container .footer-container .footer__contenedor .box__footer .logo img {
   width: 70px;
 }
-.grid-container .footer-container .footer__contenedor .box__footer h2, .grid-container .footer-container .footer__contenedor .box__footer h3 {
+.grid-container .footer-container .footer__contenedor .box__footer .h2, .grid-container .footer-container .footer__contenedor .box__footer h3 {
   color: rgb(248, 237, 216);
   font-weight: 600;
   font-size: 2rem;

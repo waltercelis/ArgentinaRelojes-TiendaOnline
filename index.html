@@ -30,46 +30,17 @@
 
 
         <!-- main -->
-        <main>
-            <div class="main__container__producto">
-                <h2>Productos más vendidos</h2>
-                <ul class="section__img">
-                    <li>
-                        <a class="a-producto" href="#"><img src="./img/relojHombreVerde.webp" alt="Reloj"></a>
-                        <div class="producto__info">
-                            <h3>Reloj Verde</h3>
-                            <h4>Hombre</h4>
-                            <a href="#"><button class="btn">Agregar al carrito</button></a>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="a-producto" href="#"><img src="./img/relojHombreDorado.webp" alt="Reloj"></a>
-                        <div class="producto__info">
-                            <h3>Reloj Dorado</h3>
-                            <h4>Hombre</h4>
-                            <a href="#"><button class="btn">Agregar al carrito</button></a>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="a-producto" href="#"><img src="./img/relojHombreNegro.webp" alt="Reloj"></a>
-                        <div class="producto__info">
-                            <h3>Reloj Negro</h3>
-                            <h4>Hombre</h4>
-                            <a href="#"><button class="btn">Agregar al carrito</button></a>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="a-producto" href="#"><img src="./img/relojHombreAzul.webp" alt="Reloj"></a>
-                        <div class="producto__info">
-                            <h3>Reloj Azul</h3>
-                            <h4>Hombre</h4>
-                            <a href="#"><button class="btn">Agregar al carrito</button></a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <main id="items">
+            <h2>Productos más vendidos</h2>
         </main>
 
+        <aside>
+            <h2>Carrito</h2>
+            <ul id="carrito"></ul>
+            <hr>
+            <p>Total: <span id="total"></span></p>
+            <button id="boton-vaciar" class="boton">Vaciar</button>
+        </aside>
 
         <!-- footer -->
         <footer class="footer">
@@ -81,7 +52,7 @@
                         </div>
                     </div>
                     <div class="box__footer">
-                        <h2>ArgentinaRelojes</h2>
+                        <h2 class="h2">ArgentinaRelojes</h2>
                     </div>
                     <div class="box__footer">
                         <h3>Contactenos</h3>

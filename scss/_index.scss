@@ -272,7 +272,7 @@
 
     .footer {
         grid-area: footer;
-        background-color: #62542a;
+        background-color: #303030;
         width: 100%;
         &-container {
             .footer__contenedor {
@@ -290,7 +290,7 @@
                         width: 70px;
                     }
                     .h2 {
-                        color: rgb(248, 237, 216);
+                        color: whitesmoke;
                         font-weight: 600;
                         font-size: 2rem;
                     }
@@ -304,7 +304,7 @@
                         gap: 20px;
                         a {
                             margin-top: 1rem;
-                            color: rgb(248, 237, 216);
+                            color: whitesmoke;
                             font-weight: 500;
                             text-decoration: none;
                             gap: 5px;
@@ -324,13 +324,13 @@
                 padding: 0px 40px;
                 p {
                     margin: 20px 0;
-                    color: rgb(248, 237, 216);
+                    color: whitesmoke;
                     font-weight: 500;
                 }
                 hr {
                     border: none;
                     height: 1px;
-                    background-color: rgb(248, 237, 216);
+                    background-color: whitesmoke;
                 }
             }
         }

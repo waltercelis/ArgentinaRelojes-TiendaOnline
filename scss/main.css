@@ -269,7 +269,7 @@
 }
 .grid-container .footer {
   grid-area: footer;
-  background-color: #62542a;
+  background-color: #303030;
   width: 100%;
 }
 .grid-container .footer-container .footer__contenedor {
@@ -289,7 +289,7 @@
   width: 70px;
 }
 .grid-container .footer-container .footer__contenedor .box__footer .h2, .grid-container .footer-container .footer__contenedor .box__footer h3 {
-  color: rgb(248, 237, 216);
+  color: whitesmoke;
   font-weight: 600;
   font-size: 2rem;
 }
@@ -303,7 +303,7 @@
 }
 .grid-container .footer-container .footer__contenedor .box__footer .box__footer__a a {
   margin-top: 1rem;
-  color: rgb(248, 237, 216);
+  color: whitesmoke;
   font-weight: 500;
   text-decoration: none;
   gap: 5px;
@@ -321,13 +321,13 @@
 }
 .grid-container .footer-container .box__copyright p {
   margin: 20px 0;
-  color: rgb(248, 237, 216);
+  color: whitesmoke;
   font-weight: 500;
 }
 .grid-container .footer-container .box__copyright hr {
   border: none;
   height: 1px;
-  background-color: rgb(248, 237, 216);
+  background-color: whitesmoke;
 }
 
 @media only screen and (min-width: 501px) and (max-width: 991px) {

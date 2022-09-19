@@ -164,13 +164,17 @@
 }
 .grid-container aside hr {
   border: none;
-  height: 1px;
-  background-color: #777;
+  height: 10px;
+  background-color: #777777;
 }
 .grid-container aside p {
   font-family: "Noto Serif Georgian", serif;
 }
-.grid-container aside .boton {
+.grid-container aside .box--comprar-vaciar {
+  display: flex;
+  gap: 20px;
+}
+.grid-container aside .box--comprar-vaciar .boton, .grid-container aside .box--comprar-vaciar .boton2 {
   background-color: #c80f22;
   border-radius: 7px;
   color: white;
@@ -182,6 +186,24 @@
   font-family: sans-serif;
   width: 100px;
   cursor: pointer;
+  display: flex;
+}
+.grid-container aside .box--comprar-vaciar .boton2 {
+  background-color: rgb(41, 36, 2);
+  color: rgb(248, 237, 216);
+}
+.grid-container aside .aside__ticket {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-transform: uppercase;
+  padding: 15px;
+  margin: auto;
+  height: 100%;
+}
+.grid-container aside .aside__ticket h4 {
+  text-align: center;
+  margin-bottom: 5px;
 }
 .grid-container aside .section__img {
   display: flex;

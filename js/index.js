@@ -1,4 +1,4 @@
-const productsDB = [
+const productos = [
   {
     id: 1,
     title: "Reloj Verde",
@@ -28,9 +28,8 @@ let carrito = [];
 const items = document.querySelector("#items");
 const carritoHTML = document.querySelector("#carrito");
 
-
-function renderizarProductos() {
-  productsDB.forEach((producto) => {
+function listarProductos() {
+  productos.forEach((producto) => {
     let productoHTML = `
         <ul class="section__img">
             <li>
@@ -41,43 +40,36 @@ function renderizarProductos() {
                         <h3>$${producto.price}</h3>
                         <h3>${producto.title}</h3>
                         <h4>Hombre</h4>
-                        <button class="btn" onclick="agregarProductoAlCarrito(${producto.id})">Agregar al carrito</button>
+                        <button class="btn" onclick="agregarProductosCarrito(${producto.id})">Agregar al carrito</button>
                     </div>
                 </div>
             </li>
         </ul>
     `;
-    let contproductoHTML = `
-    <div class="main__container__producto">
-    ${productoHTML}</div>
-    `;
     items.innerHTML += productoHTML;
   });
 }
-renderizarProductos();
+listarProductos();
 
-
-function agregarProductoAlCarrito(id) {
-  let producto = productsDB.find((producto) => producto.id === id);
+function agregarProductosCarrito(id) {
+  let producto = productos.find((producto) => producto.id === id);
   console.log(producto.id);
 
-  let productoEnCarrito = carrito.find((producto) => producto.id === id);
+  let productoCarrito = carrito.find((producto) => producto.id === id);
 
-  if (productoEnCarrito) {
-    productoEnCarrito.cantidad++;
+  if (productoCarrito) {
+    productoCarrito.cantidad++;
   } else {
     producto.cantidad = 1;
     carrito.push(producto);
   }
 
-  renderizarCarrito();
-  calcularTotal();
+  listarCarrito();
+  totalCarrito();
 }
 
-
-function renderizarCarrito() {
+function listarCarrito() {
   console.log(carritoHTML);
-
   let htmlCarrito = "";
 
   carrito.forEach((prod, id) => {
@@ -90,18 +82,16 @@ function renderizarCarrito() {
                 <h3>${prod.title}</h3>
                 <h4>Hombre</h4>
                 <p>Cantidad: ${prod.cantidad}</p>
-                <button class="btn" onclick="eliminarProductoDelCarrito(${id})">Eliminar</button>
+                <button class="btn" onclick="eliminarProductosCarrito(${id})">Eliminar</button>
             </div>
         </li>
     </ul>         
     `;
   });
-
   carritoHTML.innerHTML = htmlCarrito;
 }
 
-
-function calcularTotal() {
+function totalCarrito() {
   let total = 0;
 
   carrito.forEach((prod) => {
@@ -109,91 +99,51 @@ function calcularTotal() {
   });
 
   console.log(total);
-
   const t = document.getElementById("total");
   t.innerHTML = `<h5>$${total}</h5>`;
 }
 
-
-function eliminarProductoDelCarrito(id) {
+function eliminarProductosCarrito(id) {
+  const ticket = document.querySelector("#ticket");
+  ticket.innerHTML = "";
   carrito[id].cantidad--;
 
   if (carrito[id].cantidad === 0) {
     carrito.splice(id, 1);
   }
-  renderizarCarrito();
-  calcularTotal();
+  listarCarrito();
+  totalCarrito();
 }
-
 
 function vaciarCarrito() {
+  const ticket = document.querySelector("#ticket");
+  ticket.innerHTML = "";
   carrito = [];
-  renderizarCarrito();
-  calcularTotal();
+  listarCarrito();
+  totalCarrito();
 }
 
+function comprarCarrito() {
+  let tot = 0;
+  let title = "";
+  let cantidad = 0;
+  let ticketforeach = "";
+  carrito.forEach((prod) => {
+    ticketforeach = `
+    <h4>Ticket</h4>
+    <h5>$${tot += prod.price * prod.cantidad}</h5>
+    `
+    {/* <h6>${title += prod.title}</h6>
+    <h7>${cantidad += prod.cantidad}</h7> */}
+  });
+  if(tot != 0) {
+    const ticket = document.querySelector("#ticket");
+    ticket.innerHTML = ticketforeach;
+  }
+}
 
-const vaciar = document.querySelector("#boton-vaciar");
+const vaciar = document.querySelector("#boton--vaciar");
 vaciar.addEventListener("click", vaciarCarrito);
 
-/* let mensaje;
-let cant;
-let precio;
-let eleccion; 
-let carro;
-let producto2;
-const funcion = () => {
-    const productos = [
-        { id: 1, nombre: "verde", precio: 60000 },
-        { id: 2, nombre: "dorado", precio: 79090 },
-        { id: 3, nombre: "negro", precio: 58000 },
-        { id: 4, nombre: "azul", precio: 55000 },
-    ];
-    let seleccion = prompt("Bienvenido a ArgentinaRelojes! En nuestra barra de búsqueda porfavor ingrese el modelo de Reloj que desea llevar (Verde, Dorado, Negro, Azul)", "Negro").toLocaleLowerCase();
-    let producto = productos.find(item => item.nombre === seleccion);
-    
-    
-    if (productos.some(item => item.nombre === seleccion)) {
-        mensaje = `
-        Id: ${producto.id}
-        Nombre: Reloj ${producto.nombre}
-        Precio: $${producto.precio}
-        `;
-        alert(mensaje);
-    } else {
-        mensaje = alert(`Porfavor seleccione un modelo de reloj`);
-        funcion();
-    }
-    
-    precio = producto.precio;
-    cant = parseInt(prompt(`Seleccione la cantidad que desea llevar del modelo ${seleccion}`, "1"));
-    eleccion = prompt(`Tenes en el carrito ${cant} modelo/s del reloj ${seleccion}. ¿Deseas llevar algún modelo más?`);
-
-    const carrito = [];
-    carrito.push(producto);
-    const nuevoCarrito = carrito.map(item => {
-        return {
-            id: item.id,
-            nombre: item.nombre,
-            precio: item.precio + item.precio * (cant - 1),
-            cantidad: cant
-        }
-    });
-    if (eleccion == "SI" || eleccion == "si" || eleccion == "Si" || eleccion == "sI") {
-        funcion();
-    } else if (eleccion == "NO"){
-        mensaje = alert("Continuar");
-    } else {
-        mensaje = alert("Continuar");
-    }
-
-    let nuevoCarrito2 = nuevoCarrito.map(item => {
-        return {
-            precio: item.precio
-        }
-    });
-    let total = nuevoCarrito.reduce((acumulador, item) => acumulador + item.precio, 0);
-    console.log(nuevoCarrito);
-    mensaje = alert(`El monto a pagar por los productos del carrito es de $${total}`);
-}
-funcion(); */
+const comprar = document.querySelector("#comprar");
+comprar.addEventListener("click", comprarCarrito);

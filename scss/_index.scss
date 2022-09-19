@@ -11,13 +11,16 @@
 
     header {
         grid-area: header;
-        background: linear-gradient(90deg, rgb(24, 18, 0), rgb(63, 52, 8), rgb(49, 40, 6));
+        background: linear-gradient(90deg, #66582f, #62542a, #90782f);
         display: flex;
         flex-direction: row;
         justify-content: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
         .logo {
             margin: 0 0 0 50px;
-            height: 100px;
+            height: 84px;
             display: flex;
             align-items: center;
             img {
@@ -96,7 +99,7 @@
                         flex-direction: column;
                         .btn {
                             display: flex;
-                            background-color: rgb(41, 36, 2);
+                            background-color: #9e822e;
                             border-radius: 4px;
                             color: rgb(248, 237, 216);
                             border: 0;
@@ -188,7 +191,7 @@
             }
             .boton2 {
                 @extend .boton;
-                background-color: rgb(41, 36, 2);
+                background-color: #9e822e;
                 color: rgb(248, 237, 216);
             }
         }
@@ -269,7 +272,7 @@
 
     .footer {
         grid-area: footer;
-        background-color: #211806;
+        background-color: #62542a;
         width: 100%;
         &-container {
             .footer__contenedor {

@@ -14,14 +14,17 @@
 }
 .grid-container header {
   grid-area: header;
-  background: linear-gradient(90deg, rgb(24, 18, 0), rgb(63, 52, 8), rgb(49, 40, 6));
+  background: linear-gradient(90deg, #66582f, #62542a, #90782f);
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .grid-container header .logo {
   margin: 0 0 0 50px;
-  height: 100px;
+  height: 84px;
   display: flex;
   align-items: center;
 }
@@ -102,7 +105,7 @@
 }
 .grid-container main .section__img li .separador .producto__info .btn {
   display: flex;
-  background-color: rgb(41, 36, 2);
+  background-color: #9e822e;
   border-radius: 4px;
   color: rgb(248, 237, 216);
   border: 0;
@@ -189,7 +192,7 @@
   display: flex;
 }
 .grid-container aside .box--comprar-vaciar .boton2 {
-  background-color: rgb(41, 36, 2);
+  background-color: #9e822e;
   color: rgb(248, 237, 216);
 }
 .grid-container aside .aside__ticket {
@@ -266,7 +269,7 @@
 }
 .grid-container .footer {
   grid-area: footer;
-  background-color: #211806;
+  background-color: #62542a;
   width: 100%;
 }
 .grid-container .footer-container .footer__contenedor {
@@ -345,6 +348,13 @@
   }
 }
 @media only screen and (max-width: 500px) {
+  .grid-container header .logo {
+    margin: 0;
+    height: 78px;
+  }
+  .grid-container header h1 {
+    display: none;
+  }
   .grid-container main .section__img {
     margin-bottom: 20px;
   }

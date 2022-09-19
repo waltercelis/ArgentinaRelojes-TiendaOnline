@@ -23,6 +23,16 @@
 @media only screen and (max-width: 500px) {
     .grid-container {
 
+        header {
+            .logo {
+                margin: 0;
+                height: 78px;
+            }
+            h1 {
+                display: none;
+            }
+        }
+
         main {
             .section__img {
                 margin-bottom: 20px;

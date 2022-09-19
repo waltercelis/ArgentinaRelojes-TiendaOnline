@@ -269,7 +269,7 @@
 }
 .grid-container .footer {
   grid-area: footer;
-  background-color: #303030;
+  background-color: #3a3a3a;
   width: 100%;
 }
 .grid-container .footer-container .footer__contenedor {
@@ -372,5 +372,29 @@
   }
   .grid-container aside {
     max-width: 100% !important;
+  }
+  .grid-container .footer {
+    min-width: 350px;
+  }
+  .grid-container .footer-container .footer__contenedor .box__footer {
+    padding: 20px 50px 20px 50px;
+  }
+  .grid-container .footer-container .footer__contenedor .box__footer .h2, .grid-container .footer-container .footer__contenedor .box__footer h3 {
+    font-size: 1.2rem;
+  }
+  .grid-container .footer-container .footer__contenedor .box__footer .box__footer__a {
+    gap: 20px;
+  }
+  .grid-container .footer-container .footer__contenedor .box__footer .box__footer__a a {
+    margin-top: 0.5rem;
+    gap: 5px;
+    font-size: 12px;
+  }
+  .grid-container .footer-container .footer__contenedor .box__footer .box__footer__a a:hover {
+    opacity: 0.8;
+  }
+  .grid-container .footer-container .box__copyright p {
+    font-weight: 400;
+    font-size: 10px;
   }
 }/*# sourceMappingURL=main.css.map */

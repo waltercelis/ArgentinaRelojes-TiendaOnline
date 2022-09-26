@@ -24,6 +24,7 @@ const productos = [
     img: "./img/relojHombreAzul.webp",
   },
 ];
+/* localStorage.clear(); */
 let carrito = [];
 const items = document.querySelector("#items");
 const carritoHTML = document.querySelector("#carrito");
@@ -64,6 +65,9 @@ function agregarProductosCarrito(id) {
     carrito.push(producto);
   }
 
+  localStorage.setItem("nuevoProducto/s", JSON.stringify(carrito));
+  
+  console.log(carrito);
   listarCarrito();
   totalCarrito();
 }
@@ -71,6 +75,11 @@ function agregarProductosCarrito(id) {
 function listarCarrito() {
   console.log(carritoHTML);
   let htmlCarrito = "";
+  let carritoStorage = JSON.parse(localStorage.getItem("nuevoProducto/s"));
+   
+  if(carritoStorage){
+    carrito = carritoStorage;
+  }
 
   carrito.forEach((prod, id) => {
     htmlCarrito += `
@@ -107,10 +116,22 @@ function eliminarProductosCarrito(id) {
   const ticket = document.querySelector("#ticket");
   ticket.innerHTML = "";
   carrito[id].cantidad--;
+  /* for(let i = 0; i < localStorage.length; i++){
+    let clave = localStorage.key(i);
+  
+    console.log("clave", clave);
+    console.log("valor", localStorage.getItem(clave));
+  } */
+  /* let cantidad2 = JSON.parse(localStorage.cantidad);
+  console.log(cantidad2);
+  localStorage.removeItem(cantidad2--); */
+  localStorage.removeItem(`nuevoProducto/s`);
 
   if (carrito[id].cantidad === 0) {
     carrito.splice(id, 1);
+    localStorage.removeItem("nuevoProducto/s");
   }
+  
   listarCarrito();
   totalCarrito();
 }
@@ -118,6 +139,7 @@ function eliminarProductosCarrito(id) {
 function vaciarCarrito() {
   const ticket = document.querySelector("#ticket");
   ticket.innerHTML = "";
+  localStorage.clear();
   carrito = [];
   listarCarrito();
   totalCarrito();
@@ -141,6 +163,12 @@ function comprarCarrito() {
     ticket.innerHTML = ticketforeach;
   }
 }
+
+/* carrito.forEach(item => console.log(item.precio));
+carrito.forEach((produ) => {
+  total += produ.price * produ.cantidad;
+}); */
+/* let productosCarritoStorage = localStorage.setItem("nuevoProducto/s", JSON.stringify(carrito)); */
 
 const vaciar = document.querySelector("#boton--vaciar");
 vaciar.addEventListener("click", vaciarCarrito);

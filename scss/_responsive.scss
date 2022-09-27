@@ -40,6 +40,9 @@
                     flex-direction: column;
                     .separador {
                         gap: 20px;
+                        p {
+                            text-align: center;
+                        }
                     }
                     .a-producto {
                         max-width: 400px !important;

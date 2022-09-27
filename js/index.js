@@ -24,7 +24,6 @@ const productos = [
     img: "./img/relojHombreAzul.webp",
   },
 ];
-/* localStorage.clear(); */
 let carrito = [];
 const items = document.querySelector("#items");
 const carritoHTML = document.querySelector("#carrito");
@@ -65,7 +64,12 @@ function agregarProductosCarrito(id) {
     carrito.push(producto);
   }
 
-  localStorage.setItem("nuevoProducto/s", JSON.stringify(carrito));
+  /* let can = localStorage.cantidad; */
+
+  /* console.log("can", can); */
+  let nuevoProducto = localStorage.setItem("nuevoProducto", JSON.stringify(carrito));
+  /* let can = "nuevoProducto", carrito.cantidad;
+  console.log("can", can); */
   
   console.log(carrito);
   listarCarrito();
@@ -75,7 +79,7 @@ function agregarProductosCarrito(id) {
 function listarCarrito() {
   console.log(carritoHTML);
   let htmlCarrito = "";
-  let carritoStorage = JSON.parse(localStorage.getItem("nuevoProducto/s"));
+  let carritoStorage = JSON.parse(localStorage.getItem("nuevoProducto"));
    
   if(carritoStorage){
     carrito = carritoStorage;
@@ -125,11 +129,18 @@ function eliminarProductosCarrito(id) {
   /* let cantidad2 = JSON.parse(localStorage.cantidad);
   console.log(cantidad2);
   localStorage.removeItem(cantidad2--); */
-  localStorage.removeItem(`nuevoProducto/s`);
+  /* let carritoStorage = JSON.parse(localStorage.getItem("nuevoProducto/s"));
+  carritoStorage.forEach((productt) => {
+    let cantt = productt.cantidad
+  });
+  let productoStorage = cantt;
+  console.log(productoStorage); */
+  /* localStorage.removeItem("nuevoProducto.cantidad"); */
+  localStorage.removeItem("nuevoProducto");
 
   if (carrito[id].cantidad === 0) {
     carrito.splice(id, 1);
-    localStorage.removeItem("nuevoProducto/s");
+    localStorage.removeItem("nuevoProducto");
   }
   
   listarCarrito();

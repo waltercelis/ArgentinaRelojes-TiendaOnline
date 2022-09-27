@@ -107,7 +107,7 @@
   display: flex;
   background-color: #9e822e;
   border-radius: 4px;
-  color: rgb(248, 237, 216);
+  color: white;
   border: 0;
   padding: 12px;
   display: flex;
@@ -117,7 +117,7 @@
   cursor: pointer;
 }
 .grid-container main .section__img li .separador .producto__info .btn:hover {
-  color: wheat;
+  background-color: #91782c;
 }
 .grid-container main .section__img li .separador .producto__info h3 {
   font-weight: 500;
@@ -191,9 +191,11 @@
   cursor: pointer;
   display: flex;
 }
+.grid-container aside .box--comprar-vaciar .boton:hover, .grid-container aside .box--comprar-vaciar .boton2:hover {
+  opacity: 0.9;
+}
 .grid-container aside .box--comprar-vaciar .boton2 {
   background-color: #9e822e;
-  color: rgb(248, 237, 216);
 }
 .grid-container aside .aside__ticket {
   display: flex;
@@ -248,6 +250,9 @@
   justify-content: center;
   width: 100px;
   cursor: pointer;
+}
+.grid-container aside .section__img li .producto__info .btn:hover {
+  opacity: 0.9;
 }
 .grid-container aside .section__img li .producto__info h3 {
   font-weight: 500;
@@ -363,6 +368,9 @@
   }
   .grid-container main .section__img li .separador {
     gap: 20px;
+  }
+  .grid-container main .section__img li .separador p {
+    text-align: center;
   }
   .grid-container main .section__img li .a-producto {
     max-width: 400px !important;

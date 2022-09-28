@@ -40,9 +40,38 @@
   flex-direction: row;
   justify-content: center;
   margin: auto;
-  padding: 0 120px 0 0;
+  /* padding: 0 120px 0 0; */
   font-weight: 400;
   font-family: "Noto Serif Georgian", serif;
+}
+.grid-container header .nav__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 50px 0 0;
+}
+.grid-container header .nav__form input {
+  height: 38px;
+  width: 230px;
+  padding: 10px;
+  border: 1px solid #d3d7da;
+}
+.grid-container header .nav__form input:focus {
+  border: 1px solid #777888;
+  outline: none;
+  transition: all 1s;
+}
+.grid-container header .nav__form button {
+  height: auto;
+  width: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 .grid-container main {
   background-color: rgb(234, 234, 234);
@@ -155,19 +184,19 @@
 }
 .grid-container aside .carrito i {
   font-size: 25px;
-  color: #392b03;
+  color: rgb(57, 57, 57);
 }
 .grid-container aside h2 {
   width: 100%;
   display: flex;
   flex-direction: row;
   text-transform: uppercase;
-  color: rgb(54, 49, 7);
+  color: rgb(57, 57, 57);
   font-family: "Noto Serif Georgian", serif;
 }
 .grid-container aside hr {
   border: none;
-  height: 10px;
+  height: 5px;
   background-color: #777777;
 }
 .grid-container aside p {

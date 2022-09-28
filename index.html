@@ -22,6 +22,10 @@
                 <a href="./index.html"><img src="./img/icono.png" alt="corona"></a>
             </div>
             <h1>ArgentinaRelojes</h1>
+            <form id="form-buscar" class="nav__form">
+                <input id="buscar" type="search" placeholder="Buscar producto deseado" aria-label="Search">
+                <button type="submit"><img src="./img/lupa.png" alt="lupa"></button>
+            </form>
             <!-- <div class="carrito">
                 <i class="fa-sharp fa-solid fa-cart-shopping"></i>
             </div> -->
@@ -29,8 +33,10 @@
 
 
         <!-- main -->
-        <main id="items">
+        <main>
             <h2>Productos más vendidos</h2>
+            <div id="filtroPrecio"></div>
+            <div id="items"></div>
         </main>
 
         <!-- aside -->

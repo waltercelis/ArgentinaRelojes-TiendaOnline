@@ -139,15 +139,20 @@ function vaciarCarrito() {
 
 //COMPRAR
 function comprarCarrito() {
-  let tot = 0;
+  let total = 0;
   let title = "";
   let cantidad = 0;
   let ticketforeach = "";
   let ticketforeach2 = "";
+
+  carrito.forEach((prod) => {
+    total += prod.precio * prod.cantidad;
+  });
+
   carrito.forEach((prod) => {
     ticketforeach = `
     <h4>Ticket</h4>
-    <h5>total: $${tot += prod.precio * prod.cantidad}</h5>
+    <h5>total: $${total}</h5>
     `
     ticketforeach2 += `
     <h6>${title = prod.title}</h6>
@@ -198,7 +203,7 @@ function show(product) {
           <div class="separador">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptates eius perspiciatis laudantium molestiae error animi, dolorem veniam porro totam modi fugit est qui maiores enim. Recusandae optio fugiat inventore?</p>
               <div class="producto__info">
-                  <h3>$${product.price}</h3>
+                  <h3>$${product.precio}</h3>
                   <h3>${product.title}</h3>
                   <h4>Hombre</h4>
                   <button class="btn" onclick="agregarProductosCarrito(${product.id})">Agregar al carrito</button>

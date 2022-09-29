@@ -1,3 +1,4 @@
+//DECLARACION DE VARS Y PRODUCTOS
 const productos = [
   {
     id: 1,
@@ -28,6 +29,7 @@ let carrito = [];
 const items = document.querySelector("#items");
 const carritoHTML = document.querySelector("#carrito");
 
+//LISTAR PRODUCTOS
 function listarProductos() {
   productos.forEach((producto) => {
     let productoHTML = `
@@ -51,6 +53,7 @@ function listarProductos() {
 }
 listarProductos();
 
+//AGREGAR AL CARRITO
 function agregarProductosCarrito(id) {
   let producto = productos.find((producto) => producto.id === id);
   console.log(producto.id);
@@ -69,6 +72,7 @@ function agregarProductosCarrito(id) {
   totalCarrito();
 }
 
+//LISTAR CARRITO
 function listarCarrito() {
   console.log(carritoHTML);
   let htmlCarrito = "";
@@ -97,6 +101,7 @@ function listarCarrito() {
   }
 }
 
+//TOTAL
 function totalCarrito() {
   let total = 0;
 
@@ -109,26 +114,11 @@ function totalCarrito() {
   t.innerHTML = `<h5>$${total}</h5>`;
 }
 
+//ELIMINAR
 function eliminarProductosCarrito(id) {
   const ticket = document.querySelector("#ticket");
   ticket.innerHTML = "";
   carrito[id].cantidad--;
-  /* for(let i = 0; i < localStorage.length; i++){
-    let clave = localStorage.key(i);
-  
-    console.log("clave", clave);
-    console.log("valor", localStorage.getItem(clave));
-  } */
-  /* let cantidad2 = JSON.parse(localStorage.cantidad);
-  console.log(cantidad2);
-  localStorage.removeItem(cantidad2--); */
-  /* let carritoStorage = JSON.parse(localStorage.getItem("nuevoProducto/s"));
-  carritoStorage.forEach((productt) => {
-    let cantt = productt.cantidad
-  });
-  let productoStorage = cantt;
-  console.log(productoStorage); */
-  /* localStorage.removeItem("nuevoProducto.cantidad"); */
 
   if (carrito[id].cantidad === 0) {
     carrito.splice(id, 1);
@@ -138,6 +128,7 @@ function eliminarProductosCarrito(id) {
   totalCarrito();
 }
 
+//VACIAR
 function vaciarCarrito() {
   const ticket = document.querySelector("#ticket");
   ticket.innerHTML = "";
@@ -146,6 +137,7 @@ function vaciarCarrito() {
   totalCarrito();
 }
 
+//COMPRAR
 function comprarCarrito() {
   let tot = 0;
   let title = "";
@@ -168,12 +160,6 @@ function comprarCarrito() {
     ticket.innerHTML = ticketforeach + ticketforeach2;
   }
 }
-
-/* carrito.forEach(item => console.log(item.precio));
-carrito.forEach((produ) => {
-  total += produ.price * produ.cantidad;
-}); */
-/* let productosCarritoStorage = localStorage.setItem("nuevoProducto/s", JSON.stringify(carrito)); */
 
 const vaciar = document.querySelector("#boton--vaciar");
 vaciar.addEventListener("click", vaciarCarrito);
@@ -203,6 +189,7 @@ buscar.addEventListener('keyup', e => {
   items.innerHTML = msg;
 });
 
+//MÉTODO
 function show(product) {
   let msg = `
   <ul class="section__img">

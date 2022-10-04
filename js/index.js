@@ -59,12 +59,13 @@ function agregarProductosCarrito(id) {
   console.log(producto.id);
   let productoCarrito = carrito.find((producto) => producto.id === id);
 
-  if (productoCarrito) {
+  productoCarrito ? productoCarrito.cantidad++ : producto.cantidad = 1 && carrito.push(producto);
+  /* if (productoCarrito) {
     productoCarrito.cantidad++;
   } else {
     producto.cantidad = 1;
     carrito.push(producto);
-  }
+  } */
   
   console.log(carrito);
   
@@ -120,9 +121,10 @@ function eliminarProductosCarrito(id) {
   ticket.innerHTML = "";
   carrito[id].cantidad--;
 
-  if (carrito[id].cantidad === 0) {
+  carrito[id].cantidad === 0 && carrito.splice(id, 1);
+  /* if (carrito[id].cantidad === 0) {
     carrito.splice(id, 1);
-  }
+  } */
   
   listarCarrito();
   totalCarrito();
@@ -189,7 +191,7 @@ buscar.addEventListener('keyup', e => {
     if(en.includes(sp)) {
       msg += show(element, i);
       cont++;
-    } 
+    }
   }
   items.innerHTML = msg;
 });

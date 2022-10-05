@@ -370,3 +370,34 @@
         }
     }
 }
+
+//ALERTAS
+//SWEET ALERT
+button.swal2-styled.swal2-confirm {
+    background-color: #9e822e;
+}
+button.swal2-styled.swal2-confirm::shadow {
+    border: 0px;
+    border-color: transparent;
+}
+div.swal2-icon.swal2-warning {
+    border-color: #f0bd9e;
+    color: #db9252;
+}
+div.swal2-icon.swal2-success {
+    border-color: #9ae76d;
+    color: #89c269;
+}
+.swal2-show {
+    animation: swal2-show .4s;
+}
+
+//TOASTIFY
+.toastify {
+    padding: 13px 20px !important;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 3px !important;
+    z-index: 1 !important;
+    margin-top: 5px ;
+}

@@ -60,13 +60,6 @@ function agregarProductosCarrito(id) {
   let productoCarrito = carrito.find((producto) => producto.id === id);
 
   productoCarrito ? productoCarrito.cantidad++ : producto.cantidad = 1 && carrito.push(producto);
-  /* if (productoCarrito) {
-    productoCarrito.cantidad++;
-  } else {
-    producto.cantidad = 1;
-    carrito.push(producto);
-  } */
-  
   console.log(carrito);
   
   listarCarrito();
@@ -102,7 +95,7 @@ function listarCarrito() {
   }
 }
 
-//TOTAL
+//TOTAL CARRITO
 function totalCarrito() {
   let total = 0;
 
@@ -115,31 +108,38 @@ function totalCarrito() {
   t.innerHTML = `<h5>$${total}</h5>`;
 }
 
-//ELIMINAR
+//ELIMINAR PRODUCTOS CARRITO
 function eliminarProductosCarrito(id) {
   const ticket = document.querySelector("#ticket");
   ticket.innerHTML = "";
+  
   carrito[id].cantidad--;
-
   carrito[id].cantidad === 0 && carrito.splice(id, 1);
-  /* if (carrito[id].cantidad === 0) {
-    carrito.splice(id, 1);
-  } */
+  Toastify({
+    text: "Producto eliminado",
+    duration: 1800,
+    style: {
+      background: "linear-gradient(to left, #db1e31, #c80f22)",
+    },
+  }).showToast();
   
   listarCarrito();
   totalCarrito();
 }
 
-//VACIAR
+//VACIAR CARRITO
 function vaciarCarrito() {
-  const ticket = document.querySelector("#ticket");
-  ticket.innerHTML = "";
-  carrito = [];
-  listarCarrito();
-  totalCarrito();
+  
+  if(carrito != 0) {
+    const ticket = document.querySelector("#ticket");
+    ticket.innerHTML = "";
+    carrito = [];
+    listarCarrito();
+    totalCarrito();
+  }
 }
 
-//COMPRAR
+//COMPRAR CARRITO
 function comprarCarrito() {
   let total = 0;
   let title = "";
@@ -169,7 +169,29 @@ function comprarCarrito() {
 }
 
 const vaciar = document.querySelector("#boton--vaciar");
-vaciar.addEventListener("click", vaciarCarrito);
+vaciar.addEventListener("click", () => {
+if(carrito != 0) {
+  Swal.fire({
+    title: 'Estas seguro?',
+    text: "Los productos del carrito de eliminaran",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#9e822e',
+    cancelButtonColor: '#c80f22',
+    confirmButtonText: 'Si, vaciar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Vaciado',
+        'El carrito fue vaciado correctamente.',
+        'success',
+        vaciarCarrito()
+      )
+    }
+  })
+}
+});
 
 const comprar = document.querySelector("#comprar");
 comprar.addEventListener("click", comprarCarrito);

@@ -27,9 +27,7 @@ const productos = [
 ];
 
 let carrito = [] && JSON.parse(localStorage.getItem("nuevoProducto"));
-if(JSON.parse(localStorage.getItem("nuevoProducto")) === null){
-  carrito = [];
-};
+JSON.parse(localStorage.getItem("nuevoProducto")) === null ? carrito = [] : carrito = JSON.parse(localStorage.getItem("nuevoProducto"));
 const items = document.querySelector("#items");
 const carritoHTML = document.querySelector("#carrito");
 
@@ -263,102 +261,3 @@ async function getDate() {
 
 getDate();
 listarCarrito();
-
-
-
-//NO FUNCIONAN ---------------------------------------------------------------------------------------------------------------
-                  
-/* function guardarLocalStorage(carrito){
-  let productos;
-  
-  productos = this.obtenerLocaleStorage();
-  productos.push(carrito);
-  localStorage.setItem("nuevoProducto", JSON.stringify(productos));
-}
-
-function obtenerLocaleStorage(){
-  let productoLS;
-  if(localStorage.getItem("nuevoProducto") === null){
-    productoLS = [];
-  } else {
-    productoLS = JSON.parse(localStorage.getItem("nuevoProducto"));
-  }
-  return productoLS;
-}
-
-function eliminarProductosLocalStorage(id){
-  let productosLS;
-  productosLS = this.obtenerLocaleStorage();
-  productosLS.forEach((productoLS, index) => {
-    
-    if(productoLS.id === id){
-      productosLS.splice(index, 1);
-    } 
-  });
-
-  localStorage.setItem("nuevoProducto", JSON.stringify(productosLS));
-} */
-
-/* function leerLocalStorage(){
-  let carritoLS;
-  const carritols = "";
-  carritoLS = JSON.parse(localStorage.getItem("nuevoProducto"));
-  carritoLS.forEach((carrito) => {
-      carritols += `
-      <ul class="section__img">
-          <li>
-              <a class="a-producto"><img src="${carrito.img}" alt="Reloj"></a>
-              <div class="producto__info">
-                  <h3>$${carrito.precio}</h3>
-                  <h3>${carrito.title}</h3>
-                  <h4>Hombre</h4>
-                  <p>Cantidad: ${carrito.cantidad}</p>
-                  <button class="btn" onclick="eliminarProductosCarrito(${carrito.id})">Eliminar</button>
-              </div>
-          </li>
-      </ul>         
-      `;
-      carritoHTML.innerHTML = carritols;
-  });
-}
-leerLocalStorage(); */
-/* let precioRango = `
-  <h4>Rango de precio</h4>
-  <form  class="precioRange">
-      <label for="rangeSlider_inversed">Mínimo:</label>
-      <input id="rangeSlider_inversed" type="range" min="50000" max="200000" value="50000"></input>
-      <output>50000</output>
-      <label for="rangeSlider">Máximo:</label>
-      <input id="rangeSlider" type="range" min="50000" max="200000" value="200000"></input>
-      <output>200000</output>
-      <input type="submit" value="Aplicar">
-  </div>
-  `;
-  
-function filterRange(arr, a, b) {
-  return arr.filter(item => (a <= item && item <= b));
-}
-
-const filtroPrecio = document.querySelector("#filtroPrecio");
-filtroPrecio.innerHTML = precioRango;
-const filtrarPrecio = filtroPrecio.on('submit', 'form.precioRange', (e) => {
-  let precioEnValueMayor = e.target[2].value;
-  console.log(precioEnValueMayor)
-  let precioEnValueMenor = e.target[0].value;
-
-  for (const producto of productos) {
-    let precioEnProducto = $(producto).children('ul')[0].lastElementChild.innerHTML;
-    if (parseInt(precioEnProducto) > parseInt(precioEnValueMenor) && parseInt(precioEnProducto) < parseInt(precioEnValueMayor)) { 
-    } else {
-      producto.remove();
-    }
-  }
-});
-//CAMBIAMOS EL VALOR DE OUTPUT PARA QUE CAMBIE CON EL CALUE 
-//DEL INPUT
-filtroPrecio.on('input', '#rangeSlider', (e) => {
-  e.target.nextElementSibling.value = e.target.value
-}); 
-filtroPrecio.on('input', '#rangeSlider_inversed', (e) => {
-  e.target.nextElementSibling.value = e.target.value
-}); */

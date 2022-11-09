@@ -58,11 +58,15 @@ listarProductos();
 //AGREGAR AL CARRITO
 function agregarProductosCarrito(id) {
   let producto = productos.find((producto) => producto.id === id);
-  console.log(producto.id);
   let productoCarrito = carrito.find((producto) => producto.id === id);
 
-  productoCarrito ? productoCarrito.cantidad++ : producto.cantidad = 1 && carrito.push(producto);
-  console.log(carrito);
+  if(productoCarrito){
+    productoCarrito.cantidad++;
+    
+  } else{
+    producto.cantidad = 1;
+    carrito.push(producto);
+  }
   
   listarCarrito();
   totalCarrito();
@@ -70,7 +74,6 @@ function agregarProductosCarrito(id) {
 
 //LISTAR CARRITO
 function listarCarrito() {
-  console.log(carritoHTML);
   let htmlCarrito = "";
   ticket.innerHTML = "";
   localStorage.setItem("nuevoProducto", JSON.stringify(carrito));
@@ -107,7 +110,6 @@ function totalCarrito() {
     total += prod.precio * prod.cantidad;
   });
 
-  console.log(total);
   const t = document.getElementById("total");
   t.innerHTML = `<h5>$${total}</h5>`;
 }
@@ -245,17 +247,14 @@ function show(product) {
 
 //FETCH
 function imprimir(dato){
-  console.log(dato);
   let p = document.getElementById("p")
   p.innerHTML = dato; 
 }
 
 async function getDate() {
   let response = await fetch("http://worldtimeapi.org/api/timezone/America/Argentina/Buenos_Aires");
-  console.log(response);
   let data = await response.json();
   const date = new Date(data.datetime);
-
   imprimir(date);
 }
 

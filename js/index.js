@@ -1,59 +1,35 @@
-//DECLARACION DE VARS Y PRODUCTOS
-const productos = [
-  {
-    id: 1,
-    title: "Reloj Verde",
-    precio: 69000,
-    img: "./img/relojHombreVerde.webp",
-  },
-  {
-    id: 2,
-    title: "Reloj Dorado",
-    precio: 179090,
-    img: "./img/relojHombreDorado.webp",
-  },
-  {
-    id: 3,
-    title: "Reloj Negro",
-    precio: 110000,
-    img: "./img/relojHombreNegro.webp",
-  },
-  {
-    id: 4,
-    title: "Reloj Azul",
-    precio: 145999,
-    img: "./img/relojHombreAzul.webp",
-  },
-];
+//FETCH
+let productos;
+async function cargaProductos() {
+  productos = await fetch("https://my-json-server.typicode.com/waltercelis/dbJsonArchivoBaseDeDatos/lista");
+  productos = await productos.json();
+  productos.forEach((producto) => {
+    let productoHTML = `
+          <ul class="section__img">
+              <li>
+                  <a class="a-producto"><img src="${producto.img}" alt="Reloj"></a>
+                  <div class="separador">
+                      <p class="pp">Este tipo de reloj es uno de los mejores del mercado; elavorado y fabricado en nuestros propios talleres en Argentina; de acá salidos para la venta por mayor y por menor de nuestros relojes, hechos con los materiales de la más alta calidad.</p>
+                      <div class="producto__info">
+                          <h3>$${producto.precio}</h3>
+                          <h3>${producto.title}</h3>
+                          <h4>Hombre</h4>
+                          <button class="btn" onclick="agregarProductosCarrito(${producto.id})">Agregar al carrito</button>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      `;
+      items.innerHTML += productoHTML;
+    });
+}
+cargaProductos();
 
+//DECLARACION DE VARS
 let carrito = [] && JSON.parse(localStorage.getItem("nuevoProducto"));
 JSON.parse(localStorage.getItem("nuevoProducto")) === null ? carrito = [] : carrito = JSON.parse(localStorage.getItem("nuevoProducto"));
 const items = document.querySelector("#items");
 const carritoHTML = document.querySelector("#carrito");
-
-//LISTAR PRODUCTOS
-function listarProductos() {
-  productos.forEach((producto) => {
-    let productoHTML = `
-        <ul class="section__img">
-            <li>
-                <a class="a-producto"><img src="${producto.img}" alt="Reloj"></a>
-                <div class="separador">
-                    <p class="pp">Este tipo de reloj es uno de los mejores del mercado; elavorado y fabricado en nuestros propios talleres en Argentina; de acá salidos para la venta por mayor y por menor de nuestros relojes, hechos con los materiales de la más alta calidad.</p>
-                    <div class="producto__info">
-                        <h3>$${producto.precio}</h3>
-                        <h3>${producto.title}</h3>
-                        <h4>Hombre</h4>
-                        <button class="btn" onclick="agregarProductosCarrito(${producto.id})">Agregar al carrito</button>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    `;
-    items.innerHTML += productoHTML;
-  });
-}
-listarProductos();
 
 //AGREGAR AL CARRITO
 function agregarProductosCarrito(id) {
@@ -245,18 +221,5 @@ function show(product) {
   return msg;
 };
 
-//FETCH
-function imprimir(dato){
-  let p = document.getElementById("p")
-  p.innerHTML = dato; 
-}
-
-async function getDate() {
-  let response = await fetch("http://worldtimeapi.org/api/timezone/America/Argentina/Buenos_Aires");
-  let data = await response.json();
-  const date = new Date(data.datetime);
-  imprimir(date);
-}
-
-getDate();
 listarCarrito();
+totalCarrito();

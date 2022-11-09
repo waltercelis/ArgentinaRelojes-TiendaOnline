@@ -25,7 +25,11 @@ const productos = [
     img: "./img/relojHombreAzul.webp",
   },
 ];
-let carrito = [];
+
+let carrito = [] && JSON.parse(localStorage.getItem("nuevoProducto"));
+if(JSON.parse(localStorage.getItem("nuevoProducto")) === null){
+  carrito = [];
+};
 const items = document.querySelector("#items");
 const carritoHTML = document.querySelector("#carrito");
 
@@ -37,7 +41,7 @@ function listarProductos() {
             <li>
                 <a class="a-producto"><img src="${producto.img}" alt="Reloj"></a>
                 <div class="separador">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptates eius perspiciatis laudantium molestiae error animi, dolorem veniam porro totam modi fugit est qui maiores enim. Recusandae optio fugiat inventore?</p>
+                    <p class="pp">Este tipo de reloj es uno de los mejores del mercado; elavorado y fabricado en nuestros propios talleres en Argentina; de acá salidos para la venta por mayor y por menor de nuestros relojes, hechos con los materiales de la más alta calidad.</p>
                     <div class="producto__info">
                         <h3>$${producto.precio}</h3>
                         <h3>${producto.title}</h3>
@@ -71,6 +75,8 @@ function listarCarrito() {
   console.log(carritoHTML);
   let htmlCarrito = "";
   ticket.innerHTML = "";
+  localStorage.setItem("nuevoProducto", JSON.stringify(carrito));
+  carrito = JSON.parse(localStorage.getItem("nuevoProducto"));
 
   carrito.forEach((prod, id) => {
     htmlCarrito += `
@@ -89,7 +95,7 @@ function listarCarrito() {
     `;
   });
   carritoHTML.innerHTML = htmlCarrito;
-  localStorage.setItem("nuevoProducto", JSON.stringify(carrito));
+  
   if(localStorage.nuevoProducto === "[]") {
     localStorage.clear();
   }
@@ -225,7 +231,7 @@ function show(product) {
       <li>
           <a class="a-producto"><img src="${product.img}" alt="Reloj"></a>
           <div class="separador">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptates eius perspiciatis laudantium molestiae error animi, dolorem veniam porro totam modi fugit est qui maiores enim. Recusandae optio fugiat inventore?</p>
+              <p class="pp">Este tipo de reloj es uno de los mejores del mercado; elavorado y fabricado en nuestros propios talleres en Argentina; de acá salidos para la venta por mayor y por menor de nuestros relojes, hechos con los materiales de la más alta calidad.</p>
               <div class="producto__info">
                   <h3>$${product.precio}</h3>
                   <h3>${product.title}</h3>
@@ -239,6 +245,83 @@ function show(product) {
   return msg;
 };
 
+//FETCH
+function imprimir(dato){
+  console.log(dato);
+  let p = document.getElementById("p")
+  p.innerHTML = dato; 
+}
+
+async function getDate() {
+  let response = await fetch("http://worldtimeapi.org/api/timezone/America/Argentina/Buenos_Aires");
+  console.log(response);
+  let data = await response.json();
+  const date = new Date(data.datetime);
+
+  imprimir(date);
+}
+
+getDate();
+listarCarrito();
+
+
+
+//NO FUNCIONAN ---------------------------------------------------------------------------------------------------------------
+                  
+/* function guardarLocalStorage(carrito){
+  let productos;
+  
+  productos = this.obtenerLocaleStorage();
+  productos.push(carrito);
+  localStorage.setItem("nuevoProducto", JSON.stringify(productos));
+}
+
+function obtenerLocaleStorage(){
+  let productoLS;
+  if(localStorage.getItem("nuevoProducto") === null){
+    productoLS = [];
+  } else {
+    productoLS = JSON.parse(localStorage.getItem("nuevoProducto"));
+  }
+  return productoLS;
+}
+
+function eliminarProductosLocalStorage(id){
+  let productosLS;
+  productosLS = this.obtenerLocaleStorage();
+  productosLS.forEach((productoLS, index) => {
+    
+    if(productoLS.id === id){
+      productosLS.splice(index, 1);
+    } 
+  });
+
+  localStorage.setItem("nuevoProducto", JSON.stringify(productosLS));
+} */
+
+/* function leerLocalStorage(){
+  let carritoLS;
+  const carritols = "";
+  carritoLS = JSON.parse(localStorage.getItem("nuevoProducto"));
+  carritoLS.forEach((carrito) => {
+      carritols += `
+      <ul class="section__img">
+          <li>
+              <a class="a-producto"><img src="${carrito.img}" alt="Reloj"></a>
+              <div class="producto__info">
+                  <h3>$${carrito.precio}</h3>
+                  <h3>${carrito.title}</h3>
+                  <h4>Hombre</h4>
+                  <p>Cantidad: ${carrito.cantidad}</p>
+                  <button class="btn" onclick="eliminarProductosCarrito(${carrito.id})">Eliminar</button>
+              </div>
+          </li>
+      </ul>         
+      `;
+      carritoHTML.innerHTML = carritols;
+  });
+}
+leerLocalStorage(); */
 /* let precioRango = `
   <h4>Rango de precio</h4>
   <form  class="precioRange">

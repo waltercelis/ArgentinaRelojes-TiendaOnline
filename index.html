@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/icono.png">
+    <title>ArgentinaRelojes | Tienda Online</title>
+    <script src="https://kit.fontawesome.com/f112a79015.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="./scss/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+    <div class="grid-container">
+
+        <!-- header -->
+        <header>
+            <div class="logo">
+                <a href="./index.html"><img src="./img/icono.png" alt="corona"></a>
+            </div>
+            <h1>ArgentinaRelojes</h1>
+            <form id="form-buscar" class="nav__form">
+                <input id="buscar" type="search" placeholder="Buscar producto deseado" aria-label="Search">
+                <button type="submit"><img src="./img/lupa.png" alt="lupa"></button>
+            </form>
+        </header>
+
+
+        <!-- main -->
+        <main>
+            <h2>Productos más vendidos</h2>
+            <div id="filtroPrecio"></div>
+            <div id="items"></div>
+        </main>
+
+        <!-- aside -->
+        <aside>
+            <div class="carrito">
+                <h2>Carrito</h2>
+                <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+            </div>
+            <ul id="carrito"></ul>
+            <hr>
+            <p>Total: <span id="total"></span></p>
+            <div class="box--comprar-vaciar">
+                <button id="comprar" class="boton2">Comprar</button>
+                <button id="boton--vaciar" class="boton">Vaciar</button>
+            </div>
+            <p id="p" class="p"></p>
+            <div id="ticket" class="aside__ticket"></div>
+        </aside>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer__contenedor">
+                    <div class="box__footer">
+                        <div class="logo">
+                            <a href="index.html"><img src="./img/icono.png" alt="basquet"></a>
+                        </div>
+                    </div>
+                    <div class="box__footer">
+                        <h2 class="h2">ArgentinaRelojes</h2>
+                    </div>
+                    <div class="box__footer">
+                        <h3>Contactenos</h3>
+                        <div class="box__footer__a">
+                            <a target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                            <a target="_blank" href="https://telegram.org/"><i class="fa-brands fa-telegram"></i> Telegram</a>
+                            <a target="_blank" href="https://web.whatsapp.com/"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box__copyright">
+                    <hr>
+                    <p>Todos los derechos reservados © 2022 <b>ArgentinaRelojes</b></p>
+                </div>
+            </div>
+        </footer>
+    
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="./js/index.js"></script>
+    </div>
+</body>
+</html>

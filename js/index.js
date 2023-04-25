@@ -155,10 +155,6 @@ function listarCarrito() {
     `;
   });
   carritoHTML.innerHTML = htmlCarrito;
-  
-  /* if(localStorage.nuevoProducto === "[]") {
-    localStorage.nuevoProducto.clear();
-  } */
 }
 
 //TOTAL CARRITO

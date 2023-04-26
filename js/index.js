@@ -1,3 +1,86 @@
+// Obtener los formularios de registro e inicio de sesión
+const registerForm = document.querySelector('#register-form');
+const loginForm = document.querySelector('#login-form');
+
+let usuario = [] && JSON.parse(localStorage.getItem("usuarios"));
+JSON.parse(localStorage.getItem("usuarios")) === null ? usuario = [] : usuario = JSON.parse(localStorage.getItem("usuarios"));
+console.log(usuario);
+
+// Registrar evento para el formulario de registro
+registerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Obtener los valores del formulario de registro
+  const username = document.querySelector('#username').value;
+  const password = document.querySelector('#password').value;
+
+  let user_info = {
+    username: username,
+    password: password,
+  };
+
+  let usuario_existe = false;
+
+  usuario.forEach(function(usuario) {
+    if (usuario.username === username) {
+      usuario_existe = true;
+    }
+  });
+  
+  if (usuario_existe) {
+    Swal.fire({
+      text: 'El usuario ya existe. Por favor, elija otro nombre de usuario.',
+      confirmButtonColor: '#9e822e',
+      confirmButtonText: 'Aceptar',
+    })
+  } else {
+    Swal.fire({
+      text: 'Usuario registrado con éxito.',
+      confirmButtonColor: '#9e822e',
+      confirmButtonText: 'Aceptar',
+    })
+    usuario.push(user_info);
+    localStorage.setItem("usuarios", JSON.stringify(usuario));
+  }
+
+  registerForm.reset();
+});
+
+// Registrar evento para el formulario de inicio de sesión
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Obtener los valores del formulario de inicio de sesión
+  const loginUsername = document.querySelector('#login-username').value;
+  const loginPassword = document.querySelector('#login-password').value;
+  let user_sesion = {
+    username: loginUsername,
+    password: loginPassword,
+  };
+  let sesionUsername = user_sesion.username;
+  let sesionPassword = user_sesion.password;
+
+let usuarios_registrados = JSON.parse(localStorage.getItem("usuarios"));
+let usuarioEncontrado = usuarios_registrados.find((usuario) => usuario.username === sesionUsername);
+
+if (usuarioEncontrado && usuarioEncontrado.password === sesionPassword) {
+  Toastify({
+    text: 'Inicio de sesión exitoso.',
+    duration: 1800,
+    style: {
+      background: "linear-gradient(to left, #877130, #877130)",
+    },
+  }).showToast();
+  loginForm.reset();
+} else {
+  Swal.fire({
+    text: 'El usuario o la contraseña son incorrectos. Por favor, inténtelo de nuevo.',
+    confirmButtonColor: '#9e822e',
+    confirmButtonText: 'Aceptar',
+  })
+}
+});
+
 //FETCH
 let productos;
 async function cargaProductos() {
@@ -72,10 +155,6 @@ function listarCarrito() {
     `;
   });
   carritoHTML.innerHTML = htmlCarrito;
-  
-  if(localStorage.nuevoProducto === "[]") {
-    localStorage.clear();
-  }
 }
 
 //TOTAL CARRITO

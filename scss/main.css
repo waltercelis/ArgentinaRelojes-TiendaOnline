@@ -50,7 +50,6 @@
   justify-content: end;
   align-items: center;
   gap: 1rem;
-  margin: 0 50px 0 0;
 }
 .grid-container header .nav__form input {
   height: 38px;
@@ -72,6 +71,93 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
+}
+.grid-container header ul {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+.grid-container header ul li {
+  list-style: none;
+  width: 250px;
+  margin: auto;
+}
+.grid-container header ul li h2 {
+  font-size: 1rem;
+  margin: 20px 0 5px 15px;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.grid-container header ul li #nav__check:checked ~ ul {
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+}
+.grid-container header ul li #nav__check {
+  display: none;
+}
+.grid-container header ul li .nav__usuario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+.grid-container header ul li .nav__usuario .label__usuario {
+  width: 35px;
+  height: auto;
+  margin: auto;
+}
+.grid-container header ul li ul {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  margin-left: -320px;
+  top: 80px;
+  padding: 13px 0px;
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  transition: all 300ms ease;
+}
+.grid-container header ul li ul li {
+  width: 100%;
+}
+.grid-container header ul li ul li .nav__form__sesion {
+  display: block;
+  transition: all 400ms ease;
+  padding: 5px 15px;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+}
+.grid-container header ul li ul li .nav__form__sesion input {
+  width: 100%;
+  padding: 0 5px;
+  height: 30px;
+  font-size: 1rem;
+  outline: none;
+  margin-top: 1px;
+}
+.grid-container header ul li ul li .nav__form__sesion button {
+  background-color: #9e822e;
+  border-radius: 6px;
+  color: white;
+  border: 0;
+  padding: 10px;
+  font-family: sans-serif;
+  height: auto;
+  width: 100%;
+  cursor: pointer;
+}
+.grid-container header ul li ul li .nav__form__sesion button:hover {
+  opacity: 0.9;
 }
 .grid-container main {
   background-color: rgb(234, 234, 234);
@@ -389,8 +475,7 @@ div.swal2-icon.swal2-success {
 }
 
 .swal2-show {
-  -webkit-animation: swal2-show 0.4s;
-          animation: swal2-show 0.4s;
+  animation: swal2-show 0.4s;
 }
 
 .toastify {

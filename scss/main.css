@@ -570,6 +570,7 @@ div.swal2-icon.swal2-success {
   }
   .grid-container header ul li ul {
     width: 250px;
+    margin-left: 0px;
     top: 170px;
   }
   .grid-container main {

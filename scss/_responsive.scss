@@ -37,6 +37,16 @@
                 justify-content: center;
                 margin: 0 0 10px 30px;
             }
+            ul {
+                margin: 10px;
+                li {
+                    ul {
+                        width: 350px;
+                        margin-left: -45px;
+                        top: 170px;
+                    }     
+                }  
+            }
         }
 
         main {
@@ -76,6 +86,15 @@
             .nav__form {
                 justify-content: center;
                 margin: 0 0 10px 30px;
+            }
+            ul {
+                margin: 10px;
+                li {
+                    ul {
+                        width: 250px;
+                        top: 170px;
+                    }     
+                }  
             }
         }
 

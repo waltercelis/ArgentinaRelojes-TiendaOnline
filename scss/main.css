@@ -521,6 +521,14 @@ div.swal2-icon.swal2-success {
     justify-content: center;
     margin: 0 0 10px 30px;
   }
+  .grid-container header ul {
+    margin: 10px;
+  }
+  .grid-container header ul li ul {
+    width: 350px;
+    margin-left: -45px;
+    top: 170px;
+  }
   .grid-container main {
     padding-top: 50px;
   }
@@ -556,6 +564,13 @@ div.swal2-icon.swal2-success {
   .grid-container header .nav__form {
     justify-content: center;
     margin: 0 0 10px 30px;
+  }
+  .grid-container header ul {
+    margin: 10px;
+  }
+  .grid-container header ul li ul {
+    width: 250px;
+    top: 170px;
   }
   .grid-container main {
     padding-top: 50px;
